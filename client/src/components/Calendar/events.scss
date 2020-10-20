@@ -1,0 +1,48 @@
+@import '../../CSSReset.css';
+@import '../../App.scss';
+
+.Events {
+	display: flex;
+	justify-content: space-evenly;
+	&__List {
+		display: flex;
+		flex-direction: column;
+        align-items: center;
+		width: 650px;
+		height: 600px;
+        margin-top: 50px;
+        overflow-y: scroll;
+	}
+	&__Calendar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 600px;
+		height: 600px;
+		margin-top: 50px;
+		border-radius: 7px;
+		box-shadow: $boxshadow;
+	}
+}
+
+.Events__Item {
+    height: 60px;
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 15px;
+	border-radius: 7px;
+    box-shadow: $boxshadow;
+    transition: transform 1s;
+    user-select: none;
+    h5 {
+        font-size: clamp(1rem, 2.25vw, 1.25rem);
+        margin-bottom: 5px;
+    }
+    p {
+        font-size: clamp(.75rem, 2vw, .90rem);
+    }
+}
+
+.Events__Item:hover {
+    transform: scale(1.1);
+}
