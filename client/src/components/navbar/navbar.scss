@@ -1,0 +1,44 @@
+@import '../../CSSReset.css';
+@import '../../App.scss';
+
+.Navbar {
+	width: 100vw;
+	height: 11vh;
+	background-color: $primary;
+	font-family: 'Chilanka', cursive;
+	box-shadow: $boxshadow;
+	@include Center(space-between);
+	&__Name {
+		@include Center(center);
+		width: 40vw;
+		font-size: clamp(1rem, 2.25vw, 2rem);
+		img {
+			width: 12%;
+			border-radius: 50%;
+			margin-right: 15px;
+		}
+		h5 {
+			color: $text;
+			cursor: pointer;
+		}
+		h5:hover {
+			color: $hover;
+		}
+	}
+	&__Links {
+		@include Center(space-evenly);
+		width: 60vw;
+		font-size: clamp(0.75rem, 2vw, 1.5rem);
+		li {
+			color: $text;
+			cursor: pointer;
+			width: 10px;
+		}
+		li:hover {
+			color: $hover;
+		}
+	}
+	a {
+		text-decoration: none;
+	}
+}

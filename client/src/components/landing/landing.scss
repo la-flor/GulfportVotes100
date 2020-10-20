@@ -1,0 +1,43 @@
+@import '../../CSSReset.css';
+@import '../../App.scss';
+
+.Landing {
+    display: flex;
+    flex-direction: column;
+    &__Container {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        height: 44vh;
+    }
+    &__Mission, &__Founder {
+        min-width: 500px;
+        width: 40vw;
+        background-color: $accent;
+        color: $text;
+        border-radius: 7px;
+        margin: 50px 0;
+        padding: 15px;
+        box-shadow: $boxshadow;
+        h5 {
+            text-align: center;
+            font-weight: bold;
+            font-size: clamp(1rem, 2vw, 1.75rem);
+        }
+        ul {
+            list-style: outside;
+            margin: 20px 0 0 30px;
+            li {
+                padding: 5px 0;
+                font-size: clamp(1rem, 2vw, 1.25rem);
+            }
+        }
+    }
+    &__Founder {
+        background-color: $accent2;
+    }
+}
+
+.Slideshow {
+    height: 45vh;
+}
