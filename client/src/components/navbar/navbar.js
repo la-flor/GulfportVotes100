@@ -8,7 +8,7 @@ const navbar = () => {
             <div className='Navbar__Name'>
                 <img src="/images/logo.jpg" alt="Logo"/>
                 <Link to='/'>
-                    <h5>Gulport Votes 100%</h5>
+                    <h5>Gulfport Votes 100%</h5>
                 </Link>
             </div>
             <ul className='Navbar__Links'>

@@ -1,0 +1,82 @@
+@import '../../CSSReset.css';
+@import '../../App.scss';
+
+.Social {
+    display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+    &__Image {
+        display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 600px;
+		height: 600px;
+		margin-top: 50px;
+		border-radius: 7px;
+        box-shadow: $boxshadow;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: 130%;
+        }
+    }
+    &__Contact {
+        display: flex;
+		flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+		width: 600px;
+		height: 600px;
+		margin-top: 50px;
+		border-radius: 7px;
+        box-shadow: $boxshadow;
+        .Social__Facebook {
+            text-align: center;
+            a{
+                text-decoration: none;
+            }
+            h4 {
+                color: $primary;
+                font-size: clamp(1.5rem, 2.25vw, 2rem);
+                font-family: 'Merriweather Sans', sans-serif;
+                padding-bottom: 20px;
+            }
+            h4:hover {
+                color: $hover;
+            }
+            h5 {
+                font-size: clamp(1rem, 1.5vw, 1.75rem);
+            }
+        }
+        .Social__News {
+            h4 {
+                color: $alttext;
+                font-size: clamp(1.5rem, 2.25vw, 2rem);
+                font-family: 'Merriweather Sans', sans-serif;
+                padding-bottom: 20px;
+                text-decoration: underline;
+            }
+            .Social__Gabber {
+                text-decoration: none;
+            }
+            p {
+                color: $alttext;
+                text-align: center;
+                font-size: clamp(1.25rem, 1.75vw, 2rem);
+            }
+            ul {
+                list-style: outside;
+                margin: 10px 0 0 110px;
+            }
+            a {
+                color: $primary;
+            }
+            a:hover {
+                color: $hover;
+            }
+            li {
+                padding: 5px 0;
+            }
+        }
+    }
+}
