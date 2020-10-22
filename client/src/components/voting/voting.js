@@ -1,7 +1,7 @@
 import React from 'react'
-import './voting.scss'
+import './Voting.scss'
 
-const voting = () => {
+const Voting = () => {
     return (
         <div className='Voting'>
             <div className='Voting__Info'>
@@ -26,4 +26,4 @@ const voting = () => {
     )
 }
 
-export default voting
+export default Voting

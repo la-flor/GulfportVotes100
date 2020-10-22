@@ -1,12 +1,12 @@
 import React from 'react'
-import Slideshow from './slideshow'
+import Slideshow from './Slideshow'
 
-import './landing.scss'
+import './Landing.scss'
 
-const landing = () => {
+const Landing = () => {
     return (
         <div className='Landing'>
-            <Slideshow />
+            {/* <Slideshow /> */}
             <div className='Landing__Container'>
                 <div className='Landing__Mission'>
                     <h5>Our Mission to the Community</h5>
@@ -26,4 +26,4 @@ const landing = () => {
     )
 }
 
-export default landing
+export default Landing

@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/navbar/navbar'
-import Landing from './components/landing/landing'
-import Voting from './components/voting/voting'
-import Calendar from './components/calendar/events'
-import Social from './components/social/social'
+import Navbar from './components/Navbar/Navbar'
+import Landing from './components/Landing/Landing'
+import Voting from './components/Voting/Voting'
+import Calendar from './components/Calendar/Events'
+import Social from './components/Social/Social'
 import './App.scss';
 
 function App() {

@@ -1,6 +1,6 @@
 import React from 'react'
-import EventItem from './eventItem'
-import './events.scss'
+import EventItem from './EventItem'
+import './Events.scss'
 
 const Events = () => {
     return (
