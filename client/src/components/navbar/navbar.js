@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import './navbar.scss'
+import './Navbar.scss'
 
-const navbar = () => {
+const Navbar = () => {
     return (
         <div className='Navbar'>
             <div className='Navbar__Name'>
@@ -26,4 +26,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default Navbar

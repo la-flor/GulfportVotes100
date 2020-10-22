@@ -1,7 +1,7 @@
 import React from 'react'
-import './social.scss'
+import './Social.scss'
 
-const social = () => {
+const Social = () => {
     return (
         <div className='Social'>
             <div className='Social__Image'>
@@ -36,4 +36,4 @@ const social = () => {
     )
 }
 
-export default social
+export default Social

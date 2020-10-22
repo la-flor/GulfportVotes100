@@ -1,7 +1,7 @@
 import React from 'react'
-import './events.scss'
+import './Events.scss'
 
-const eventItem = ({title, description}) => {
+const EventItem = ({title, description}) => {
     return (
         <div className='Events__Item'>
             <h5>{title}</h5>
@@ -10,4 +10,4 @@ const eventItem = ({title, description}) => {
     )
 }
 
-export default eventItem
+export default EventItem
