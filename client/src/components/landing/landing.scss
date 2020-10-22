@@ -43,23 +43,33 @@
 	display: flex;
 	width: 100vw;
 	height: 45vh;
-	background-color: $accent3;
+	background-color:hsl(358, 79%, 46%);
+	&__Background {
+		width: 100vw;
+		height: 45vh;
+		background-color: $accent3;
+		clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+		position: relative;
+	}
 	&__Images {
+		position: absolute;
 		height: 100%;
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		opacity: 0;
-		transition: 1s ease;
+		transition: opacity 0.04s ease-in-out;
 		img {
-			height: 90%;
-			width: auto;
+			// height: 95%;
+			// width: auto;
+			object-fit: contain;
 			border-radius: 7px;
-			margin: 20px 10px;
+			// margin: 10px;
 		}
 	}
 }
 
 .Slideshow .Active {
+	opacity: 1;
 	transition-duration: 2s;
 }
