@@ -9,23 +9,24 @@ const Slideshow = () => {
         setCurImage(curImage === images.length - 1 ? 0 : curImage + 1);
     }
 
-    // useEffect(() => {
-    //     setTimeout(goToNext, 3000);
-    //     console.log(curImage);
-    //     return () => {
-    //         clearTimeout(goToNext);
-    //     };
-    // });
+    useEffect(() => {
+        setTimeout(goToNext, 4000);
+        return () => {
+            clearTimeout(goToNext);
+        };
+    });
 
     return (
         <div className="Slideshow">
-            {images.map((image, key) => (
-                <div className={key === curImage ? "Slideshow__Images Active" : "Slideshow__Images"} key={key}>
-                    {key === curImage && (
-                        <img src={`${image}`} alt="Gulfport Votes Images" />
-                    )}
-                </div>
-            ))}
+            <div className='Slideshow__Background'>
+                {images.map((image, key) => (
+                    <div key={key} className={key === curImage ? "Slideshow__Images Active" : "Slideshow__Images"}>
+                        {key === curImage && (
+                            <img src={`${image}`} alt="Gulfport Votes Images" />
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
