@@ -1,0 +1,71 @@
+@import '../../CSSReset.css';
+@import '../../App.scss';
+
+.Login {
+	font-family: 'Roboto Condensed', sans-serif;
+	display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 375px;
+    margin: 10% auto;
+    border: 3px solid $primary;
+    border-radius: 7px;
+	box-shadow: $boxshadow;
+	&__Greeting {
+		margin-top: 30px;
+		user-select: none;
+		h4 {
+			font-weight: bold;
+			font-size: 2rem;
+			color: $primary;
+            margin: 0 12%;
+		}
+		p {
+			font-size: 1.5rem;
+			color: $alttext;
+            margin: 0 12%;
+		}
+	}
+	&__Form {
+		display: flex;
+		flex-direction: column;
+		width: 300px;
+		margin: 20px auto;
+	}
+	&__Label {
+		margin: 20px 0 5px;
+		font-size: 1.2rem;
+		color: $accent3;
+		font-weight: 500;
+	}
+	&__Input {
+		border: 0;
+		border-bottom: 2px solid $accent3;
+		color: $alttext;
+		font-size: 1rem;
+	}
+	&__Input:focus {
+		outline: none;
+		border-color: hsl(205, 100%, 60%);
+	}
+	&__Submit {
+		margin: 40px 0 20px;
+		padding: 15px 0;
+		cursor: pointer;
+		border: none;
+		border-radius: 7px;
+		color: $text;
+		background-color: $accent;
+		font-size: 1.1rem;
+		transition: background-color 0.5s;
+	}
+	&__Submit:hover {
+		background-color: $hover;
+	}
+}
+
+.Error {
+	margin-top: 5px;
+	color: $error;
+	font-size: 12px;
+}
