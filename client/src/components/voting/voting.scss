@@ -4,7 +4,8 @@
 .Voting {
 	display: flex;
 	justify-content: space-evenly;
-	flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
 	&__Info {
 		display: flex;
 		flex-direction: column;
@@ -60,9 +61,22 @@
             width: 500px;
             height: 600px;
             transition: transform 1s;
-        }
-        img:hover {
-            transform: scale(1.35);
+            cursor: pointer;
         }
 	}
+}
+
+.Voting__View {
+    position: absolute;
+    width: 100vw;
+    height: 200vh;
+    background: hsla(0, 0, 50, .8);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    .Voting__Image {
+        width: 50%;
+        min-width: 500px;
+        height: 100%;
+    }
 }

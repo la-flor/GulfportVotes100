@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Voting.scss'
 
 const Voting = () => {
+    const [document, setDocument] = useState(undefined)
+
+    const openPDF = (e) => {
+        let trimURL = e.target.src;
+        trimURL = trimURL.toString().slice(-19)
+        setDocument(trimURL)
+    }
+
     return (
         <div className='Voting'>
             <div className='Voting__Info'>
@@ -18,10 +26,15 @@ const Voting = () => {
             </div>
             <div className='Voting__Ballot'>
                 <h5>Gulfport Sample Ballot</h5>
-                <img src="/images/ballot1.jpg" alt="Sample Ballot"/>
-                <img src="/images/ballot2.jpg" alt="Sample Ballot"/>
-                <img src="/images/ballot3.jpg" alt="Sample Ballot"/>
+                <img src="/images/ballot1.jpg" alt="Sample Ballot" onClick={e => openPDF(e)}/>
+                <img src="/images/ballot2.jpg" alt="Sample Ballot" onClick={e => openPDF(e)}/>
+                <img src="/images/ballot3.jpg" alt="Sample Ballot" onClick={e => openPDF(e)}/>
             </div>
+            {document && (
+                <div className='Voting__View' onClick={() => setDocument(undefined)}>
+                    <img className='Voting__Image' src={document} alt="Sample Ballot" onClick={e => openPDF(e)}/>
+                </div>
+            )}
         </div>
     )
 }
