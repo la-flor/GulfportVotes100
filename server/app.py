@@ -1,8 +1,10 @@
 from flask import Flask, render_template
+from flask_cors import CORS
 from models import db, connect_db
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///gulfport_votes'
 app.config['SECRET_KEY'] = 'Super_Secret_TO_Be_Changed'
 
