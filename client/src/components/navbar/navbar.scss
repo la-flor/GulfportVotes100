@@ -3,7 +3,8 @@
 
 .Navbar {
 	width: 100vw;
-	height: 11vh;
+	height: 100%;
+	padding: 1rem 0;
 	background-color: $primary;
 	font-family: 'Chilanka', cursive;
 	box-shadow: $boxshadow;
@@ -11,11 +12,11 @@
 	&__Name {
 		@include Center(center);
 		width: 40vw;
-		font-size: clamp(1rem, 2.25vw, 2rem);
+		font-size: clamp(.6rem, 2.25vw, 2rem);
 		img {
-			width: 12%;
+			width: 20%;
 			border-radius: 50%;
-			margin-right: 15px;
+			margin-right: 1rem;
 		}
 		h5 {
 			color: $text;

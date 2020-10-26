@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import './Admin.scss'
+import './Admin.scss';
 
 const Admin = () => {
-    const [form, setForm] = useState({ email: '', password: '' });
+	const [form, setForm] = useState({ email: '', password: '' });
 
 	const { register, handleSubmit, errors } = useForm();
 
@@ -21,10 +21,10 @@ const Admin = () => {
 
 	const handleChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
-    };
-    
-    return (
-        <div className='Login'>
+	};
+
+	return (
+		<div className='Login'>
 			<div className='Login__Greeting'>
 				<h4>Welcome,</h4>
 				<p>Sign in to continue</p>
@@ -74,7 +74,7 @@ const Admin = () => {
 				</button>
 			</form>
 		</div>
-    )
-}
+	);
+};
 
-export default Admin
+export default Admin;

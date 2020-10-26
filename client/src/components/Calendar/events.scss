@@ -10,18 +10,18 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 600px;
-		height: 600px;
-		margin-top: 60px;
+		width: 37.5rem;
+		height: 37.5rem;
+		margin-top: 4rem;
 		overflow-y: scroll;
 	}
 	&__Calendar {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 600px;
-		height: 600px;
-		margin-top: 50px;
+		width: 37.5rem;
+		height: 37.5rem;
+		margin-top: 3rem;
 		border-radius: 7px;
 		box-shadow: $boxshadow;
 		iframe {
@@ -34,8 +34,8 @@
 .Events__Item {
 	height: 60px;
 	width: 80%;
-	margin-bottom: 30px;
-	padding: 15px;
+	margin-bottom: 2rem;
+	padding: 1rem;
 	border-radius: 7px;
 	box-shadow: $boxshadow;
 	transition: transform 1s;
@@ -51,4 +51,22 @@
 
 .Events__Item:hover {
 	transform: scale(1.1);
+}
+
+@media screen and (max-width: 400px) {
+	.Events__List {
+		margin-bottom: 2rem;
+	}
+	.Events__List, .Events__Calendar {
+		width: auto;
+	}
+}
+
+@media screen and (min-width: 401px) and (max-width: 1260px) {
+	.Events__List {
+		margin-bottom: 2rem;
+	}
+	.Events__List, .Events__Calendar {
+		width: 80vw;
+	}
 }
