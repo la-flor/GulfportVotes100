@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chilanka&family=Merriweather+Sans:wght@500;700&family=Roboto:wght@300;400;700&display=swap');
 
 $text: hsl(0, 0%, 100%);
-$alttext: hsl(219, 18%, 15%); 
+$alttext: hsl(219, 18%, 15%);
 $hover: hsl(205, 100%, 80%);
 $error: hsl(10, 100%, 40%);
 $primary: hsl(207, 90%, 54%);
@@ -18,7 +18,7 @@ $boxshadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .App {
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 @keyframes fadeIn {

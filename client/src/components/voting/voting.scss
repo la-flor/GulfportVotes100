@@ -4,79 +4,96 @@
 .Voting {
 	display: flex;
 	justify-content: space-evenly;
-    flex-wrap: wrap;
-    position: relative;
-	&__Info {
+	flex-wrap: wrap;
+	position: relative;
+	&__Info,
+	&__Ballot {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 600px;
-		height: 600px;
-		margin-top: 50px;
+		width: 37.5rem;
+		height: 37.5rem;
+		margin: 3rem 1rem 0;
 		border-radius: 7px;
-        box-shadow: $boxshadow;
+		box-shadow: $boxshadow;
+	}
+	&__Info {
 		h5 {
 			text-align: center;
-            padding: 20px 0;
-            font-size: clamp(1rem, 2.25vw, 1.75rem);
+			padding: 1.25rem 0;
+			font-size: clamp(1rem, 2.25vw, 1.75rem);
 		}
 		p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+			font-size: clamp(1rem, 2vw, 1.25rem);
 		}
 		img {
-            width: 80%;
-            height: 100%;
-            overflow: hidden;
+			width: 80%;
+			height: 100%;
+			overflow: hidden;
 			border-radius: 7px;
-            margin-top: 20px;
-            transition: transform 1s;
-        }
-        img:hover {
-            transform: scale(1.25);
-        }
-        ul {
-            margin: 10px 0;
-        }
-        li {
-            list-style: outside;
-            padding: 5px 0;
-        }
+			margin-top: 1.25rem;
+			transition: transform 1s;
+		}
+		img:hover {
+			transform: scale(1.07);
+		}
+		ul {
+			margin: 0.6rem 0;
+		}
+		li {
+			font-size: clamp(0.75rem, 2vw, 1.25rem);
+			list-style: outside;
+			padding: 0.3rem 0;
+		}
 	}
 	&__Ballot {
-        display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 600px;
-		height: 600px;
-		margin-top: 50px;
-		border-radius: 7px;
-        box-shadow: $boxshadow;
-        overflow-y: scroll;
-        h5 {
+		overflow-y: scroll;
+		h5 {
 			text-align: center;
-            padding: 20px 0;
-            font-size: clamp(1rem, 2.25vw, 1.75rem);
+			padding: 1.25rem 0;
+			font-size: clamp(1rem, 2.25vw, 1.75rem);
 		}
-        img {
-            width: 500px;
-            height: 600px;
-            transition: transform 1s;
-            cursor: pointer;
-        }
+		img {
+			width: 31.25rem;
+			height: 37.5rem;
+			transition: transform 1s;
+			cursor: pointer;
+		}
 	}
 }
 
 .Voting__View {
-    position: absolute;
-    width: 100vw;
-    height: 200vh;
-    background: hsla(0, 0, 50, .8);
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    .Voting__Image {
-        width: 50%;
-        min-width: 500px;
-        height: 100%;
-    }
+	position: absolute;
+	width: 100vw;
+	height: 100%;
+	background: hsla(0, 0, 50, 0.8);
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	.Voting__Image {
+		width: 100vw;
+		// min-width: 31.25rem;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.Voting__Ballot {
+		margin-bottom: 1.25rem;
+		img {
+			width: 20rem;
+			height: auto;
+		}
+	}
+	.Voting__View {
+		height: 156vh;
+		&__Image {
+			height: 100vh;
+		}
+	}
+}
+
+@media screen and (min-width: 401px) and (max-width: 1260px) {
+	.Voting__Ballot {
+		margin-bottom: 1.25rem
+	}
 }
