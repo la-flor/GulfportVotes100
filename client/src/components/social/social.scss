@@ -2,110 +2,111 @@
 @import '../../App.scss';
 
 .Social {
-    display: flex;
+	display: flex;
 	justify-content: space-evenly;
-    flex-wrap: wrap-reverse;
-    &__Image, &__Contact {
-        display: flex;
+	flex-wrap: wrap-reverse;
+	&__Image,
+	&__Contact {
+		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 37.5rem;
 		height: 37.5rem;
-		margin-top: 3rem;
+		margin: 3rem 0;
 		border-radius: 7px;
-        box-shadow: $boxshadow;
-    }
-    &__Image {
-        overflow: hidden;
-        img {
-            height: 100%;
-            width: 130%;
-        }
-    }
-    &__Contact {
-        justify-content: space-evenly;
-        .Social__Facebook {
-            text-align: center;
-            a{
-                text-decoration: none;
-            }
-            h4 {
-                color: $primary;
-                font-size: clamp(1.75rem, 2.25vw, 2rem);
-                font-family: 'Merriweather Sans', sans-serif;
-                padding-bottom: 20px;
-            }
-            h4:hover {
-                color: $hover;
-            }
-            h5 {
-                font-size: clamp(1rem, 1.5vw, 1.75rem);
-            }
-        }
-        .Social__News {
-            h4 {
-                color: $alttext;
-                font-size: clamp(1.25rem, 2.25vw, 2rem);
-                font-family: 'Merriweather Sans', sans-serif;
-                padding-bottom: 20px;
-                text-align: center;
-                text-decoration: underline;
-            }
-            .Social__Gabber {
-                text-decoration: none;
-            }
-            p {
-                color: $alttext;
-                text-align: center;
-                font-size: clamp(1.25rem, 1.75vw, 2rem);
-            }
-            ul {
-                list-style: outside;
-                margin: .5rem 0 0 6.75rem;
-            }
-            a {
-                color: $primary;
-            }
-            a:hover {
-                color: $hover;
-            }
-            li {
-                padding: 5px 0;
-            }
-        }
-    }
+		box-shadow: $boxshadow;
+	}
+	&__Image {
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 130%;
+		}
+	}
+	&__Contact {
+		justify-content: space-evenly;
+		.Social__Facebook {
+			text-align: center;
+			a {
+				text-decoration: none;
+			}
+			h4 {
+				color: $primary;
+				font-size: clamp(1.75rem, 2.25vw, 2rem);
+				font-family: 'Merriweather Sans', sans-serif;
+				padding-bottom: 20px;
+			}
+			h4:hover {
+				color: $hover;
+			}
+			h5 {
+				font-size: clamp(1rem, 1.5vw, 1.75rem);
+			}
+		}
+		.Social__News {
+			h4 {
+				color: $alttext;
+				font-size: clamp(1.25rem, 2.25vw, 2rem);
+				font-family: 'Merriweather Sans', sans-serif;
+				padding-bottom: 20px;
+				text-align: center;
+				text-decoration: underline;
+			}
+			.Social__Gabber {
+				text-decoration: none;
+			}
+			p {
+				color: $alttext;
+				text-align: center;
+				font-size: clamp(1.25rem, 1.75vw, 2rem);
+			}
+			ul {
+				list-style: outside;
+				margin: 0.5rem 0 0 6.75rem;
+			}
+			a {
+				color: $primary;
+			}
+			a:hover {
+				color: $hover;
+			}
+			li {
+				padding: 5px 0;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 400px) {
-    .Social__Contact, .Social__Image {
-        width: auto;
-        height: 20rem;
-        margin: 3rem 1rem;
-        .Social__News {
-            ul {
-                margin: .5rem 0 0 1rem;
-            }
-        }
-    }
-    .Social__Image {
-        margin-top: .25rem;
-    }
+	.Social__Contact,
+	.Social__Image {
+		width: auto;
+		height: 20rem;
+		margin: 3rem 1rem;
+		.Social__News {
+			ul {
+				margin: 0.5rem 0 0 1rem;
+			}
+		}
+	}
+	.Social__Image {
+		margin-top: 0.25rem;
+	}
 }
 
 @media screen and (min-width: 401px) and (max-width: 1260px) {
-	.Social__Contact, .Social__Image {
-        // width: auto;
-        height: 20rem;
-        margin: 2rem 1rem;
-        .Social__News {
-            ul {
-                margin: .5rem 0 0 1rem;
-            }
-        }
-    }
-    .Social__Image {
-        height: 23rem;
-        width: auto;
-        margin: 0 1rem;
-    }
+	.Social__Contact,
+	.Social__Image {
+		height: 20rem;
+		margin: 2rem 1rem;
+		.Social__News {
+			ul {
+				margin: 0.5rem 0 0 1rem;
+			}
+		}
+	}
+	.Social__Image {
+		height: 30rem;
+		width: 38rem;
+	}
 }
