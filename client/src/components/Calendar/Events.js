@@ -7,40 +7,24 @@ const Events = () => {
 		<div className='Events'>
 			<div className='Events__List'>
 				<EventItem
-					title='ComeUnity Celebration'
+					title='Nov 3rd: ComeUnity Celebration'
 					description='Shake off the election stress and have some fun with your neighbors and friends'
 				/>
 				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
+					title='Oct 24th: Drive in Movie Night'
+					description='Join us in watching "All In: The Fight for Democracy", a riveting examination of voter suppression in the United States'
 				/>
 				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
+					title='Oct 22nd: National Voter Registration Day'
+					description='If you have not registered yet, today is the day!'
 				/>
 				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
+					title='Oct 9th: Porch Party'
+					description='A free, family-friendly outdoor party celebrating Volunteers and Voting.'
 				/>
 				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
-				/>
-				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
-				/>
-				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
-				/>
-				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
-				/>
-				<EventItem
-					title='ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
+					title='Oct 6th: Florida Registration Day'
+					description="Florida's official registration day. Don't delay! Register today!"
 				/>
 			</div>
 			<div className='Events__Calendar'>
