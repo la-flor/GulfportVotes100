@@ -19,7 +19,11 @@ const Landing = () => {
 					</ul>
 				</div>
 				<div className='Landing__Founder'>
-					<h5>How we came to be</h5>
+					<h5>How we came to be:</h5>
+					<h4>Inspired by large deficit in voter turnout and the desire to increase 
+                        voter knowledge, Gulfport Votes 100% was replicated from a previous initiative 
+                        in Massachusetts by the same founder.  Our goal is to increase voter turnout 
+                        and inspire citizens to become informed on their candidates and amendments.</h4>
 				</div>
 			</div>
 		</div>
