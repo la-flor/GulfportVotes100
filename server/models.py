@@ -1,4 +1,8 @@
 from flask_login import UserMixin
+from flask import redirect
+from app import current_user
+
+from flask_admin.contrib.sqla import ModelView
 
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
@@ -102,6 +106,13 @@ class Event(db.Model):
             "description": event.description, 
             "scheduled_time": event.scheduled_time 
             }
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect("/login")
 
 def connect_db(app):
     """Connect this database to provided Flask App"""
