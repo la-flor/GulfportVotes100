@@ -1,11 +1,12 @@
 from flask_login import UserMixin
-import json
 
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
-bcrypt = Bcrypt()
+
 db = SQLAlchemy()
+bcrypt = Bcrypt()
+
 
 class User(UserMixin, db.Model):
     """Define user"""
@@ -63,7 +64,7 @@ class Event(db.Model):
                             nullable=False)
     scheduled_time = db.Column(db.TIMESTAMP(timezone=False),
                             nullable=False)
-    
+
     @staticmethod
     def all_events():
         """Retrieves and returns all events in our database."""
