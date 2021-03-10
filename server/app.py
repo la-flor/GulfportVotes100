@@ -1,9 +1,11 @@
 import os
 from flask import Flask, request, redirect, jsonify
-# from flask_debugtoolbar import DebugToolbarExtension
+from flask_debugtoolbar import DebugToolbarExtension
+
+from flask_admin.contrib.sqla import ModelView
+from flask_admin import Admin
 
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
-
 from models import User, Event, db, connect_db
 
 app = Flask(__name__)
@@ -12,11 +14,15 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "you should have a passw
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///gulfport_votes')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-# toolbar = DebugToolbarExtension(app)
+toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
+
+# instatiate and create admin view to edit events database table
+admin = Admin(app)
+admin.add_view(ModelView(Event, db.session))
 
 # instantiate and initialize login manager
 login_manager = LoginManager()
@@ -72,11 +78,6 @@ def login():
 
     return jsonify({ "status": "Login page successfully loaded."})
 
-@app.route('/admin')
-@login_required
-def admin_page():
-    return jsonify({ "status": "Admin page successfully loaded."})
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -118,4 +119,3 @@ def delete_event(event_id):
         return jsonify({"status": f'Successfully deleted event {event_id}'})
     except:
         return jsonify({"status": "Unable to delete event"})
-    
