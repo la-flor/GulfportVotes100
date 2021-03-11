@@ -54,8 +54,7 @@
 			font-size: clamp(1rem, 2.25vw, 1.75rem);
 		}
 		img {
-			width: 31.25rem;
-			height: 37.5rem;
+			width: 33rem;
 			transition: transform 1s;
 			cursor: pointer;
 		}
@@ -65,14 +64,15 @@
 .Voting__View {
 	position: absolute;
 	width: 100vw;
-	height: 100%;
+	height: 125vh;
 	background: hsla(0, 0, 50, 0.8);
 	display: flex;
 	justify-content: center;
 	cursor: pointer;
 	.Voting__Image {
-		width: 100vw;
-		// min-width: 31.25rem;
+		max-width: 100vw;
+		height: 125vh;
+		overflow: auto;
 	}
 }
 
