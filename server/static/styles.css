@@ -1,0 +1,32 @@
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.container {
+    max-width: 500px;
+}
+
+.title {
+    background-color: hsl(207, 90%, 54%);
+    text-align: center;
+    height: 200px;
+    padding: 75px;
+    box-shadow: 0px 8px 10px rgb(0,0,0,.3);
+}
+
+.title h1 {
+    font-size: 4em;
+    color: white;
+}
+
+.btn-info {
+    background-color: hsl(207, 90%, 54%);
+}
+
+.btn-info:hover {
+    background-color: hsl(207, 90%, 54%);
+}
+
+.btn-info:after {
+    background-color: hsl(207, 90%, 54%);
+}

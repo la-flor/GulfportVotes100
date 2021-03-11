@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import EventItem from './EventItem';
+import axios from 'axios';
+
 import './Events.scss';
 
 const Events = () => {
+	const REACT_APP_API_URL = "http://localhost:5000";
+	const [events, setEvents] = useState([])
+
+	useEffect(function loadEvents() {
+		try {
+			async function getEventInfo() {
+				const { data } = await axios.get(`${REACT_APP_API_URL}/events`)
+				setEvents(data.events)
+			}
+			getEventInfo()
+		} catch (err) {
+			console.error("Unable to load events from server.", err)
+		}
+	}, [])
+
 	return (
 		<div className='Events'>
 			<div className='Events__List'>
-				<EventItem
-					title='Nov 3rd: ComeUnity Celebration'
-					description='Shake off the election stress and have some fun with your neighbors and friends'
-				/>
-				<EventItem
-					title='Oct 24th: Drive in Movie Night'
-					description='Join us in watching "All In: The Fight for Democracy", a riveting examination of voter suppression in the United States'
-				/>
-				<EventItem
-					title='Oct 22nd: National Voter Registration Day'
-					description='If you have not registered yet, today is the day!'
-				/>
-				<EventItem
-					title='Oct 9th: Porch Party'
-					description='A free, family-friendly outdoor party celebrating Volunteers and Voting.'
-				/>
-				<EventItem
-					title='Oct 6th: Florida Registration Day'
-					description="Florida's official registration day. Don't delay! Register today!"
-				/>
+				{events.length 
+					? (events.map(e => 
+							<EventItem 
+								key={e.id} 
+								id={e.id} 
+								title={e.title} 
+								description={e.description}
+								scheduled_time={e.scheduled_time.slice(5,16)} />))
+					: <h3>There are no future events currently scheduled.</h3>}
 			</div>
 			<div className='Events__Calendar'>
 				<iframe
