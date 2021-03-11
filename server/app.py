@@ -21,8 +21,6 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
-# app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
-
 # instatiate and create admin view to edit events database table
 admin = Admin(app)
 admin.add_view(MyModelView(Event, db.session))
@@ -60,7 +58,6 @@ def create_user():
             return redirect("/admin")
         except:
             flash("Invalid create user attempt.")
-            # return redirect('/createuser')
     return render_template("create_user.html", form=form)
 
 
@@ -102,34 +99,5 @@ def logout():
 def events():
     """If POST, then add post to database, otherwise return all posts"""
 
-    if request.method == "POST":
-        try: 
-            title = request.json.get('title')
-            description = request.json.get('description')
-            scheduled_time = request.json.get('scheduled_time')
-            """scheduled_time should be in format: YYYY-MM-DD HH:MI:SS"""
-
-            event = Event.create_event(title, description, scheduled_time)
-            return jsonify({"status": "Successfully created event", "event": event})
-        except:
-            return jsonify({"status": "Invalid attempt to create event."})
-
     events = Event.all_events()
     return jsonify(events = events)
-
-@app.route("/events/<int:event_id>", methods=["DELETE"])
-def delete_event(event_id):
-    """Delete event from event list"""
-
-    try:
-        event = Event.query.get(event_id)
-
-        if not event:
-            return jsonify({"status": "Invalid event ID parameter."})
-        
-        db.session.delete(event)
-        db.session.commit()
-
-        return jsonify({"status": f'Successfully deleted event {event_id}'})
-    except:
-        return jsonify({"status": "Unable to delete event"})
