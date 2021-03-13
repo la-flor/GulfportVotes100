@@ -39,14 +39,14 @@ def connect_db(app):
 
 connect_db(app)
 
-from models import User, Event, MyModelView
+from models import User, Event, EventModelView, UserModelView
 from forms import LoginForm, CreateUserForm, ResetPasswordForm, RequestResetForm
 
 
 # instatiate and create admin view to edit events database table
 admin = Admin(app)
-admin.add_view(MyModelView(Event, db.session))
-admin.add_view(MyModelView(User, db.session))
+admin.add_view(EventModelView(Event, db.session))
+admin.add_view(UserModelView(User, db.session))
 
 # instantiate and initialize login manager
 login_manager = LoginManager()
@@ -175,3 +175,7 @@ def events():
 
     events = Event.all_events()
     return jsonify(events = events)
+
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template('404.html', title="404 Error")

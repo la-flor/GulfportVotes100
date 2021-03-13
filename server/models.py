@@ -101,7 +101,7 @@ class Event(db.Model):
         """Retrieves and returns all events in our database."""
         
         events_query = Event.query.order_by(Event.scheduled_time.desc()).all()
-        
+
         if not len(events_query):
             return {"events": "There are no events created."}
         else:
@@ -135,7 +135,17 @@ class Event(db.Model):
             "scheduled_time": event.scheduled_time 
             }
 
-class MyModelView(ModelView):
+class EventModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect("/login")
+
+    column_default_sort = ('scheduled_time', 'scheduled_time')
+
+
+class UserModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
 
