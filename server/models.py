@@ -140,3 +140,5 @@ class MyModelView(ModelView):
 
     def inaccessible_callback(self, name, **kwargs):
         return redirect("/login")
+
+    column_exclude_list = ['password']
