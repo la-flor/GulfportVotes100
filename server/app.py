@@ -143,7 +143,7 @@ def reset_request():
             flash('An email has been sent with instructions to reset your password.', 'success')
             return redirect('/login')
         except:
-            flash("An error occured.  Please contact our dev team.")
+            flash("An error occured.  Please contact our dev team.", "danger")
 
     return render_template('request_reset.html', title='Reset Password', form=form)
 
