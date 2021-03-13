@@ -100,7 +100,8 @@ class Event(db.Model):
     def all_events():
         """Retrieves and returns all events in our database."""
         
-        events_query = Event.query.all()
+        events_query = Event.query.order_by(Event.scheduled_time.desc()).all()
+        
         if not len(events_query):
             return {"events": "There are no events created."}
         else:
