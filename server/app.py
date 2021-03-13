@@ -79,7 +79,7 @@ def create_user():
 
             return redirect("/admin")
         except:
-            flash("Invalid create user attempt.")
+            flash("Invalid create user attempt.", 'danger')
     return render_template("create_user.html", form=form)
 
 
@@ -88,7 +88,7 @@ def create_user():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        flash("You're already logged in.  You may logout or use the links on the toolbar to navigate.")
+        flash("You're already logged in.  You may logout or use the links on the toolbar to navigate.", 'info')
         return redirect('/admin')
     
     form = LoginForm()
@@ -100,21 +100,22 @@ def login():
             user = User.is_valid(email=email, password=password)
             login_user(user)
             
+            flash("You have successfully logged in", "success")
             return redirect("/admin")
         except:
-            flash("Invalid login attempt.")
+            flash("Invalid login attempt.", 'danger')
             return redirect('/login')
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', title="Login Page", form=form)
 
 @app.route("/logout")
 def logout():
     if current_user.is_authenticated:
         logout_user()
-        flash("You have successfully logged out.")
+        flash("You have successfully logged out.", 'success')
         return redirect('/admin')
     else:
-        flash("You are not currently logged in.  To login, click the 'Login' button for further access.")
+        flash("You are not currently logged in.  To login, click the 'Login' button for further access.", 'warning')
         return redirect('/admin')
 
 def send_reset_email(user):
@@ -135,10 +136,14 @@ def reset_request():
     form = RequestResetForm()
 
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        send_reset_email(user)
-        flash('An email has been sent with instructions to reset your password.')
-        return redirect('/login')
+        try:
+            user = User.query.filter_by(email=form.email.data).first()
+            if user:    
+                send_reset_email(user)
+            flash('An email has been sent with instructions to reset your password.', 'success')
+            return redirect('/login')
+        except:
+            flash("An error occured.  Please contact our dev team.")
 
     return render_template('request_reset.html', title='Reset Password', form=form)
 
@@ -149,20 +154,20 @@ def reset_token(token):
 
     user = User.verify_reset_token(token)
     if user is None:
-        flash('That is an invalid or expired token')
+        flash('That is an invalid or expired token', 'danger')
         return redirect('/reset_password')
 
     form = ResetPasswordForm()
     if form.validate_on_submit():
         try:
             User.change_password(user, form.password.data)
-            flash('Your password has been updated.')
+            flash('Your password has been updated.', 'success')
             return redirect('/login')
         except:
-            flash('We were unable to update your password.  Please contact our dev team for further assistence.')
+            flash('We were unable to update your password.  Please contact our dev team for further assistence.', 'danger')
             return redirect('/reset_password')
 
-    return render_template('reset_token.html', title='Reset Password', form=form)
+    return render_template('reset_token.html', title='Reset Password', form=form, token=token)
 
 @app.route("/events", methods=["GET", "POST"])
 def events():
