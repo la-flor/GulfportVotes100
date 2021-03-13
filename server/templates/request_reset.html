@@ -2,7 +2,10 @@
 
 {% block content %}
 
-    <form method="POST" action="/login">
+
+<div class="content-section">
+
+    <form method="POST" action="/reset_password">
 
         {{ form.hidden_tag() }}
         {{ form.csrf_token }}
@@ -17,9 +20,9 @@
             <br>
         {% endfor %}
 
-        <input type="submit" class="btn btn-info" value="Login">
-        <br><br>
-        <a href="/reset_password">Forgot your password?</a>
+        <input type="submit" class="btn btn-info" value="Request Password Change">
     </form>
+
+</div>
 
 {% endblock %}

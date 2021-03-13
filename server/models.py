@@ -1,14 +1,13 @@
+import os
 from flask_login import UserMixin
 from flask import redirect
-from app import current_user
-
+from app import db
+from flask_login import current_user
 from flask_admin.contrib.sqla import ModelView
-
 from flask_bcrypt import Bcrypt
-from flask_sqlalchemy import SQLAlchemy
 
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
-db = SQLAlchemy()
 bcrypt = Bcrypt()
 
 
@@ -19,7 +18,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer,
                     primary_key=True)
     
-    username = db.Column(db.Text,
+    email = db.Column(db.VARCHAR(320),
                             unique=True,
                             nullable=False)
 
@@ -27,14 +26,42 @@ class User(UserMixin, db.Model):
                             unique=True,
                             nullable=False)
 
+    def get_reset_token(self, expire_time=43200000):
+        # token expire_time is 12 hours
+        s = Serializer(os.environ.get('SECRET_KEY'), expire_time)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+    
+    @staticmethod
+    def change_password(user, new_password):
+        """Change user password"""
+
+        hashed_pwd = bcrypt.generate_password_hash(new_password).decode('UTF-8')
+
+        user.password = hashed_pwd
+        db.session.commit()
+
+        return user
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(os.environ.get('SECRET_KEY'))
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
+    
+    def __repr__(self):
+        return f"User('{self.email}')"
+
     @classmethod
-    def create_user(cls, username, password):
+    def create_user(cls, email, password):
         """Create a new user.  Hashes password and adds user to system."""
 
         hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
 
         user = User(
-            username=username,
+            email=email,
             password=hashed_pwd,
         )
 
@@ -44,10 +71,10 @@ class User(UserMixin, db.Model):
         return user
     
     @classmethod
-    def is_valid(cls, username, password):
-        """Find user with 'username' and 'password'."""
+    def is_valid(cls, email, password):
+        """Find user with 'email' and 'password'."""
 
-        user = cls.query.filter_by(username=username).first()
+        user = cls.query.filter_by(email=email).first()
         is_authorized = bcrypt.check_password_hash(user.password, password)
         if is_authorized:
             return user
@@ -73,7 +100,8 @@ class Event(db.Model):
     def all_events():
         """Retrieves and returns all events in our database."""
         
-        events_query = Event.query.all()
+        events_query = Event.query.order_by(Event.scheduled_time.desc()).all()
+
         if not len(events_query):
             return {"events": "There are no events created."}
         else:
@@ -107,15 +135,21 @@ class Event(db.Model):
             "scheduled_time": event.scheduled_time 
             }
 
-class MyModelView(ModelView):
+class EventModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
 
     def inaccessible_callback(self, name, **kwargs):
         return redirect("/login")
 
-def connect_db(app):
-    """Connect this database to provided Flask App"""
+    column_default_sort = ('scheduled_time', 'scheduled_time')
 
-    db.app = app
-    db.init_app(app)
+
+class UserModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect("/login")
+
+    column_exclude_list = ['password']
