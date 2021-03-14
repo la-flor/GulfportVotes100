@@ -23,8 +23,9 @@ class User(UserMixin, db.Model):
                             nullable=False)
 
     password = db.Column(db.Text,
-                            unique=True,
-                            nullable=False)
+                            unique=False,
+                            nullable=False,
+                            default="new-user: Go through forgot password to confirm email and reset password.")
 
     def get_reset_token(self, expire_time=43200000):
         # token expire_time is 12 hours
@@ -146,6 +147,15 @@ class EventModelView(ModelView):
 
 
 class UserModelView(ModelView):
+
+    def filtering_function():
+        return db.query(CustomModel).filter_by(field_to_filter='password')
+
+    form_args = dict(
+        Status = dict(label="Status", query_factory=filtering_function)
+    )
+
+
     def is_accessible(self):
         return current_user.is_authenticated
 
@@ -153,3 +163,4 @@ class UserModelView(ModelView):
         return redirect("/login")
 
     column_exclude_list = ['password']
+    form_excluded_columns = ('password')
