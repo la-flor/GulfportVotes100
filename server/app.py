@@ -54,29 +54,6 @@ def load_user(user_id):
     except:
         return None
 
-
-@app.route('/', methods=['GET'])
-def home():
-    return jsonify({ "status": "Home page successfully loaded"})
-
-@app.route('/createuser', methods=['GET', 'POST'])
-def create_user():
-    form = CreateUserForm()
-    if form.validate_on_submit():
-        try:
-            user = User.create_user(form.email.data, form.password.data)
-
-            if not user:
-                raise AssertionError("Unable to insert user into database.")
-            
-            login_user(user)
-
-            return redirect("/admin")
-        except:
-            flash("Invalid create user attempt.", 'danger')
-    return render_template("create_user.html", form=form)
-
-
 # GET request returns login page with login
 # POST request authenticates user and redirects to admin page
 @app.route('/login', methods=['GET', 'POST'])

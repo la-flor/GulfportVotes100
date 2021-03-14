@@ -54,22 +54,6 @@ class User(UserMixin, db.Model):
     
     def __repr__(self):
         return f"User('{self.email}')"
-
-    @classmethod
-    def create_user(cls, email, password):
-        """Create a new user.  Hashes password and adds user to system."""
-
-        hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
-
-        user = User(
-            email=email,
-            password=hashed_pwd,
-        )
-
-        db.session.add(user)
-        db.session.commit()
-
-        return user
     
     @classmethod
     def is_valid(cls, email, password):
