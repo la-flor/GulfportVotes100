@@ -31,14 +31,6 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 toolbar = DebugToolbarExtension(app)
 
-def connect_db(app):
-    """Connect this database to provided Flask App"""
-
-    db.app = app
-    db.init_app(app)
-
-connect_db(app)
-
 from models import User, Event, EventModelView, UserModelView
 from forms import LoginForm, CreateUserForm, ResetPasswordForm, RequestResetForm
 
